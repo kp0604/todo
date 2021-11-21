@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// import "./App.css";
+import Auth from "./components/Auth";
+import Navbar from "./components/Navbar";
+import TodoSection from "./components/TodoSection";
+import { Routes, Route,useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 
 function App() {
+const User = useSelector((state) => state.User);
+  const Navigate = useNavigate()
+  
+  useEffect(() => {
+    if (User.isLoggedin) {
+    Navigate("/todos")
+    }
+    else {
+      Navigate("/")
+    }
+  },[User.isLoggedin,Navigate])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-screen w-screen">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Auth/>} />
+        <Route path="/todos" element={<TodoSection/>} />
+      </Routes>
+
+ 
     </div>
   );
 }
