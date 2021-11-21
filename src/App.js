@@ -1,4 +1,4 @@
-// import "./App.css";
+
 import Auth from "./components/Auth";
 import Navbar from "./components/Navbar";
 import TodoSection from "./components/TodoSection";
