@@ -10,17 +10,24 @@ const Todoform = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo({ todo, status: false }));
+    if (todo !== "") {
+      dispatch(addTodo({ todo, status: false }));
+    }
+    else {
+      alert("Add Todo...")
+    }
   };
 
   return (
     <div className="p-2 flex justify-center absolute bottom-0 bg-white w-screen">
       <form
+        autoComplete="on"
         noValidate
         onSubmit={handleSubmit}
         className="flex w-full lg:w-3/5 border-1 border-black rounded-xl bg-gray-800 px-2 py-2"
       >
         <input
+          autoComplete="on"
           placeholder="Enter Something....."
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
@@ -28,6 +35,7 @@ const Todoform = () => {
         ></input>
         <button type="submit" className="py-1 px-2 mx-2  text-2xl ">
           <img
+            alt="img.png"
             src={add}
             width="35"
             height="35"

@@ -3,30 +3,30 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { delTodo, updTodo } from "../redux/actions";
 
-import del2 from './del2.png'
-import addnotes from './addnotes.png'
+import del2 from "./del2.png";
+import addnotes from "./addnotes.png";
 
 const Todolist = () => {
   const dispatch = useDispatch();
 
   const Todos = useSelector((state) => state.Todo);
-  console.log(Todos);
+  // console.log(Todos);
 
   const handleClick = (idx) => {
-    // e.preventDefault()
+  
 
     dispatch(delTodo(idx));
   };
   const handleChange = (idx) => {
-    // e.preventDefault()
+
 
     dispatch(updTodo({ idx: idx }));
-    console.log("in chan");
+    // console.log("in chan");
   };
 
   return (
     <div className="p-4 top-16 bottom-20 absolute overflow-y-scroll w-screen">
-      {Todos !== null ? (
+      {Todos.length !== 0  ? (
         Todos.map((todo, idx) => {
           return (
             <div
@@ -48,15 +48,15 @@ const Todolist = () => {
                 {todo.data}
               </p>
               <button onClick={() => handleClick(idx)} className=" ml-4">
-                <img src={del2} width="35" height="35"></img>
+                <img alt="img.png" src={del2} width="35" height="35"></img>
               </button>
             </div>
           );
         })
       ) : (
-                  <div className="flex flex-col justify-around  h-full">
-                      <p className="text-3xl text-center">Add Some Todos .....</p>
-          <img src={addnotes} className=" lg:w-96  mx-auto" ></img>
+        <div className="flex flex-col justify-around  h-full">
+          <p className="text-3xl text-center">Add Some Todos .....</p>
+          <img alt="img.png" src={addnotes} className=" lg:w-96  mx-auto"></img>
         </div>
       )}
     </div>

@@ -21,24 +21,24 @@ const Auth = () => {
 
   const handleSubmitR = (e) => {
     e.preventDefault();
-    console.log(userReg);
-    if (userReg.emailR && userReg.passwordR && userReg.passwordR.length >= 7) {
+    // console.log(userReg);
+    if (userReg.emailR && userReg.passwordR && userReg.passwordR.length >= 4) {
       dispatch(regUser(userReg));
       setUserReg(initialUserR)
-    } else if (userReg.emailR && userReg.passwordR.length <= 7) {
-      alert("Password Must be of minimum 8 characters!");
+    } else if (userReg.emailR && userReg.passwordR.length <= 4) {
+      alert("Password Must be of minimum 4 characters!");
     } else {
       alert("Enter all fields!");
     }
   };
   const handleSubmitL = (e) => {
     e.preventDefault();
-    console.log(userLog);
-    if (userLog.emailL && userLog.passwordL && userLog.passwordL.length >= 7) {
+    // console.log(userLog);
+    if (userLog.emailL && userLog.passwordL && userLog.passwordL.length >= 4) {
       dispatch(logUser(userLog));
       setUserLog(initialUserL);
-    } else if (userLog.emailL && userLog.passwordL.length <= 7) {
-      alert("Password Must be of minimum 8 characters!");
+    } else if (userLog.emailL && userLog.passwordL.length <= 4) {
+      alert("Password Must be of minimum 4 characters!");
     } else {
       alert("Enter all fields!");
     }
@@ -54,6 +54,7 @@ const Auth = () => {
       items-center rounded-xl  border-2 border-black"
       >
         <form
+          autoComplete="on"
           noValidate
           onSubmit={handleSubmitR}
           className="w-full flex flex-col"
@@ -61,7 +62,7 @@ const Auth = () => {
           <span className="text-2xl p-2 my-2 text-center font-semibold bg-yellow-300">
             Register
           </span>
-          <input
+          <input autoComplete="on"
             type="email"
             placeholder="Email"
             name="emailR"
@@ -69,7 +70,7 @@ const Auth = () => {
             onChange={handleChangeInputR}
             className="px-8 py-3 my-1 border-2 border-black rounded-xl"
           ></input>
-          <input
+          <input autoComplete="on"
             type="password"
             placeholder="Password"
             name="passwordR"
@@ -86,6 +87,7 @@ const Auth = () => {
         </form>
         <span className="text-4xl md:p-8 ">OR</span>
         <form
+          autoComplete="on"
           noValidate
           onSubmit={handleSubmitL}
           className="flex flex-col w-full"
@@ -93,7 +95,7 @@ const Auth = () => {
           <span className="text-2xl p-2 my-2 text-center font-semibold bg-yellow-300">
             Login
           </span>
-          <input
+          <input autoComplete="on"
             type="email"
             placeholder="Email"
             name="emailL"
@@ -101,7 +103,7 @@ const Auth = () => {
             onChange={handleChangeInputL}
             className="px-8 py-3  my-1 border-2 border-black rounded-xl"
           ></input>
-          <input
+          <input autoComplete="on"
             type="password"
             placeholder="Password"
             name="passwordL"

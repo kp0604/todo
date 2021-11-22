@@ -1,27 +1,26 @@
 import { combineReducers } from "redux";
 
-const todoRed = (state = null, action) => {
-  console.log(action);
-  console.log(state);
+const todoRed = (state = [], action) => {
+  // console.log(action);
+  // console.log(state);
   if (action.type === "addTodo") {
-    if (state === null && action.payload.data !== undefined) {
-      console.log("in add red1");
-      console.log(action.payload.data);
+    if (state === []) {
+      // console.log("in add red1");
+      // console.log(action.payload.data);
       return [action.payload];
-    } else if (action.payload === undefined) {
-      return state;
-    } else {
-      console.log("in add red");
+    } 
+     else {
+      // console.log("in add red");
       return [...state, action.payload];
     }
   } else if (action.type === "delTodo") {
     state.splice(action.payload, 1);
-    console.log(state);
+    // console.log(state);
     return [...state];
   } else if (action.type === "updTodo") {
     state[action.payload.idx].status = !state[action.payload.idx].status;
-    console.log(state);
-    console.log("in up");
+    // console.log(state);
+    // console.log("in up");
     return [...state];
   } else {
     return state;
@@ -39,19 +38,19 @@ const checkUser = (usob, starr) => {
 };
 
 const authRed = (state = { user: null, isLoggedin: false }, action) => {
-  console.log(action);
-  console.log(state);
+  // console.log(action);
+  // console.log(state);
   if (action.type === "regUser") {
     if (state.user === null || !checkUser(action.payload, state.user)) {
-      console.log("in auth red1");
-      console.log(action.payload);
+      // console.log("in auth red1");
+      // console.log(action.payload);
     //   alert("RegisteredR");
       return { user: [action.payload], isLoggedin: true };
     } else if (checkUser(action.payload, state.user)) {
       alert("User already exists....Please Login to continue.");
       return state;
     } else {
-      console.log("in auth red");
+      // console.log("in auth red");
       alert("RegisteredR");
       return { user: [...state.user, action.payload], isLoggedin: true };
     }

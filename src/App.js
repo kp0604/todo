@@ -6,7 +6,6 @@ import { Routes, Route,useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-
 function App() {
 const User = useSelector((state) => state.User);
   const Navigate = useNavigate()
